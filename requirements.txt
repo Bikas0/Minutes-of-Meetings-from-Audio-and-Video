@@ -1,0 +1,37 @@
+Flask
+transformers[torch]
+torchaudio
+python-dotenv
+librosa
+pydub
+moviepy
+celery
+redis
+ffmpeg-python
+markdown
+PyAudio
+python-dotenv
+google-generativeai
+openai-whisper
+openai
+fastapi
+uvicorn
+ffmpeg
+python-multipart
+aiofiles
+
+# sudo apt-get update
+# sudo apt-get install portaudio19-dev
+# sudo apt update
+# sudo apt upgrade libstdc++6
+# sudo apt install build-essential
+# sudo apt install gcc-10 g++-10
+# sudo apt install libjack0
+# sudo apt-get install --reinstall alsa-base alsa-utils
+# sudo apt-get update
+# sudo apt-get install --reinstall alsa-base alsa-utils pulseaudio
+
+
+
+
+
