@@ -1,6 +1,7 @@
 import os
 import subprocess
 import torch
+import magic
 import warnings
 from transformers import AutoModelForSpeechSeq2Seq, AutoProcessor, pipeline
 from dotenv import load_dotenv
@@ -65,7 +66,7 @@ def audio_to_transcript(audio_path):
 
     print("Processing audio... Please wait.")
     result = speech_pipeline(audio_path, return_timestamps=False)
-    print("Transcription completed.")
+    print("Transcription completed.\n")
 
     # Clean up resources
     del speech_pipeline, model, processor
@@ -74,11 +75,25 @@ def audio_to_transcript(audio_path):
     return result['text']
 
 
-file = 'AudioFile/input_audio.mp3'  # Replace with your video file path
-extension = file.split(".")[-1]
-if extension == "mp4":
+def get_file_type(file_path):
+    # Create a magic object to identify file type
+    file_magic = magic.Magic(mime=True)
+    file_type = file_magic.from_file(file_path)
+    
+    # Check if the file type indicates audio or video
+    if 'audio' in file_type:
+        return "Audio"
+    elif 'video' in file_type:
+        return "Video"
+    else:
+        return "Unknown file type"
+
+file = 'output_cleaned.wav'  # Replace with your video file path
+file_type = get_file_type(file)
+if file_type == "Video":
     file = extract_audio_from_video(file)
 transcript = audio_to_transcript(file)
+print("\n\n", transcript, "\n\n")
 mom_result = generate_mom(transcript)
 # os.remove(os.path.join(AUDIO_FOLDER, "input_audio.mp3"))
 print(mom_result)

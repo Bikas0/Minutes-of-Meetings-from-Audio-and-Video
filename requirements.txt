@@ -1,4 +1,5 @@
 Flask
+python-magic
 transformers[torch]
 torchaudio
 python-dotenv
