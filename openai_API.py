@@ -26,7 +26,7 @@ def audio_to_transcript(audio_file):
 
 def MoM_generation(prompt):
     response = openai.Completion.create(model="text-davinci-003",
-                                        prompt= "Can you generate the Minute of Meeting in form of bullet points for the below transcript?\n"+prompt, 
+                                        prompt= "Can you generate the Minute of Meeting in form of bullet points for Developer Md Bikasuzzaman the below transcript?\n"+prompt, 
                                         temperature=0.7, 
                                         max_tokens=256, 
                                         top_p=1,
