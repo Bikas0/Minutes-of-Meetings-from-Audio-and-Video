@@ -1,1 +1,1 @@
-# Minutes-of-Meetings-from-Audio-or-Video
+# Minutes of Meetings from Audio & Video
