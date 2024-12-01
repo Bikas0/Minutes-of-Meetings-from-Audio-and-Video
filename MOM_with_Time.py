@@ -657,6 +657,7 @@ def audio_to_transcript(audio_path):
         result = speech_pipeline(audio_path)
     except Exception as e:
         raise RuntimeError(f"Error during transcription: {e}")
+    # Developer Md Bikasuzzaman
     print("Transcription completed.\n")
 
     # Inspect the result structure
