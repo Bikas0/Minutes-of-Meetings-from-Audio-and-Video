@@ -1,6 +1,7 @@
 <h1>Minutes of Meetings from Audio and Video</h1>
 
 An automated solution for generating meeting minutes from audio and video files using state-of-the-art AI technologies. This project utilizes OpenAI's Whisper for transcription and GPT-4 for generating structured meeting summaries.
+![MOM](https://github.com/user-attachments/assets/11a98f4b-19ca-44bd-8602-8296f25fb03f)
 
 <h3>Features</h3>
 <ol>
