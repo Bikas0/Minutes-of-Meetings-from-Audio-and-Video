@@ -27,6 +27,7 @@ def SpeechRecord(FOLDER):
     input_device_index = None
     for i in range(device_count):
         device_info = p.get_device_info_by_index(i)
+        # Developer Md Bikasuzzaman
         if device_info['maxInputChannels'] > 0:  # Only consider devices that can be used for input
             input_device_index = i
             break
