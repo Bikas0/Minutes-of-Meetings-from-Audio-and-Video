@@ -161,15 +161,16 @@ os.makedirs(AUDIO_FOLDER, exist_ok=True)
 
 # Function to convert seconds to hours, minutes, and seconds
 def format_time(seconds):
+    """
+    Format time from seconds to HH:MM:SS.
+    If seconds is None, default to 0.
+    """
+    if seconds is None:
+        seconds = 0
     hours = seconds // 3600
     minutes = (seconds % 3600) // 60
     seconds = seconds % 60
-    if hours > 0:
-        return f"{int(hours)}h {int(minutes)}m {int(seconds)}s"
-    elif minutes > 0:
-        return f"{int(minutes)}m {int(seconds)}s"
-    else:
-        return f"{int(seconds)}s"
+    return f"{int(hours):02}:{int(minutes):02}:{int(seconds):02}"
 
 # Function to generate Minutes of Meeting (MoM) with formatted time
 def generate_mom(transcription_result):
@@ -231,24 +232,25 @@ def audio_to_transcript(audio_path):
     # print("Raw Transcription Result:", result)
 
     # Process result based on format
-    if "chunks" in result:
+  
+    # Handle transcription result
+    if isinstance(result, dict) and "chunks" in result:
         transcript_data = {
             "segments": [
                 {
                     "start": chunk["timestamp"][0],
                     "end": chunk["timestamp"][1],
-                    "text": chunk.get("text", ""),
+                    "text": chunk["text"],
                 }
                 for chunk in result["chunks"]
             ]
         }
     elif isinstance(result, dict) and "text" in result:
-        # Fallback case: Treat the entire result as one segment
         transcript_data = {
             "segments": [{"start": 0, "end": 0, "text": result["text"]}]
         }
     else:
-        raise ValueError("The transcription output format is invalid or unsupported.")
+        raise ValueError("Invalid transcription output format.")
 
     # Clean up resources
     del speech_pipeline, model, processor
