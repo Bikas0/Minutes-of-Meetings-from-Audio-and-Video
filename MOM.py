@@ -28,6 +28,7 @@ def generate_mom(text):
     Each title should be followed by a bullet-point list of the main discussion points related to that specific topic.
     Text: {text}
     """
+    # Developer Md Bikasuzzaman
     model = genai.GenerativeModel('gemini-pro', generation_config={"temperature": 0})
     response = model.generate_content([prompt])
     return response.text
