@@ -26,6 +26,7 @@ def get_speech_transcription(audio_path):
 
     speech_pipeline = pipeline(
         "automatic-speech-recognition",
+        # Developer Md Bikasuzzaman
         model=model,
         tokenizer=processor.tokenizer,
         feature_extractor=processor.feature_extractor,
